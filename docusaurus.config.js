@@ -172,7 +172,7 @@ const config = {
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/Tio-pratomo/html-css-git-tutorial",
               },
             ],
           },
@@ -196,10 +196,3 @@ const config = {
 };
 
 export default config;
-     darkTheme: prismThemes.dracula,
-      },
-    }),
-};
-
-export default config;
-g;
