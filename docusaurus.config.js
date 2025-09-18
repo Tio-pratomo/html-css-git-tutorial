@@ -73,9 +73,8 @@ const config = {
         id: "css",
         path: "css",
         routeBasePath: "css",
-        sidebarPath: "./sidebarsCss.js",
         editUrl:
-          "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",,
       },
     ],
     [
@@ -197,3 +196,10 @@ const config = {
 };
 
 export default config;
+     darkTheme: prismThemes.dracula,
+      },
+    }),
+};
+
+export default config;
+g;
