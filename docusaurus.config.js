@@ -45,6 +45,10 @@ const config = {
     locales: ["en"],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
   presets: [
     [
       "classic",
@@ -77,6 +81,7 @@ const config = {
         id: "css",
         path: "css",
         routeBasePath: "css",
+        sidebarPath: "./sidebarsCss.js",
         editUrl:
           "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
       },
@@ -88,6 +93,17 @@ const config = {
         path: "git",
         routeBasePath: "git",
         sidebarPath: "./sidebarsGit.js",
+        editUrl:
+          "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "docusaurus",
+        path: "docusaurus",
+        routeBasePath: "docusaurus",
+        sidebarPath: "./sidebarsDocusaurus.js",
         editUrl:
           "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
       },
@@ -128,6 +144,13 @@ const config = {
             docsPluginId: "git",
           },
           {
+            type: "docSidebar",
+            sidebarId: "docusaurusSidebar",
+            position: "left",
+            label: "Docusaurus",
+            docsPluginId: "docusaurus",
+          },
+          {
             href: "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
             label: "GitHub",
             position: "right",
@@ -151,6 +174,10 @@ const config = {
               {
                 label: "Git",
                 to: "/git/intro",
+              },
+              {
+                label: "Docusaurus",
+                to: "/docusaurus/intro",
               },
             ],
           },
