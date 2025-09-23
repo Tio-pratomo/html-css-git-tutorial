@@ -114,7 +114,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: "img/docusaurus-social-card.jpg",
+      image: "img/web-dev-social-card.jpg",
       navbar: {
         title: "My Site",
         logo: {
@@ -222,6 +222,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ["markdown"],
       },
     }),
 };
