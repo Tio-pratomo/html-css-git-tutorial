@@ -182,28 +182,28 @@ const config = {
             ],
           },
           {
-            title: "Community",
+            title: "Resource Lainnya",
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                label: "Belajar Hugo",
+                href: "https://tio-pratomo.github.io/learn-hugo/",
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                label: "Utility Javascript",
+                href: "https://tio-pratomo.github.io/utility-js/",
               },
               {
-                label: "X",
-                href: "https://x.com/docusaurus",
+                label: "Docusaurus Docs",
+                href: "https://docusaurus.io/",
               },
             ],
           },
           {
-            title: "More",
+            title: "Profile",
             items: [
               {
                 label: "GitHub",
-                href: "https://github.com/Tio-pratomo/html-css-git-tutorial",
+                href: "https://github.com/Tio-pratomo",
               },
             ],
           },
@@ -211,7 +211,7 @@ const config = {
             title: "Thanks to bellshade",
             items: [
               {
-                label: "Github",
+                label: "Github Bellshade",
                 href: "https://github.com/bellshade/",
               },
             ],
