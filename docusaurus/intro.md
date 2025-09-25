@@ -8,7 +8,11 @@ Selamat datang di materi pembelajaran Docusaurus! Repositori ini berisi panduan 
 
 ## Kerangka Pembelajaran
 
-Materi ini diadaptasi dari transkrip video tutorial dan telah direvisi menjadi 7 sesi pembelajaran yang mudah diikuti. Setiap sesi fokus pada aspek tertentu dari Docusaurus dan disajikan dalam format Markdown yang jelas.
+Materi ini merupakan catatan pribadi dari saya melihat video di youtube. Anda bisa kunjungi :
+
+[Docusaurus Video Tutorial](https://www.youtube.com/watch?v=QfqLQwPxFWw&t=123s)
+
+Lalu materi tersebut menjadi 7 sesi catatan, untuk pembelajaran yang mudah diikuti. Anda bisa lihat materinya di sidebar.
 
 ### Daftar Sesi
 
