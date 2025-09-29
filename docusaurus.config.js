@@ -163,10 +163,6 @@ const config = {
                 label: "Git",
                 to: "/git/intro",
               },
-              {
-                label: "Docusaurus",
-                to: "/docusaurus/intro",
-              },
             ],
           },
           {
