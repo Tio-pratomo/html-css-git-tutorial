@@ -17,10 +17,13 @@ const config = {
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    /* 
+     * Disable faster experiment
     experimental_faster: {
       rspackBundler: true, // required flag
       rspackPersistentCache: true, // new flag
     },
+    */
   },
 
   // Set the production url of your site here
@@ -35,18 +38,20 @@ const config = {
   projectName: "html css git tutorial", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: "id",
+    locales: ["id"],
   },
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
   },
 
   presets: [
@@ -97,17 +102,6 @@ const config = {
           "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
       },
     ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "docusaurus",
-        path: "docusaurus",
-        routeBasePath: "docusaurus",
-        sidebarPath: "./sidebarsDocusaurus.js",
-        editUrl:
-          "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
-      },
-    ],
   ],
 
   themeConfig:
@@ -143,13 +137,7 @@ const config = {
             label: "Git",
             docsPluginId: "git",
           },
-          {
-            type: "docSidebar",
-            sidebarId: "docusaurusSidebar",
-            position: "left",
-            label: "Docusaurus",
-            docsPluginId: "docusaurus",
-          },
+
           {
             href: "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
             label: "GitHub",
@@ -191,10 +179,6 @@ const config = {
               {
                 label: "Utility Javascript",
                 href: "https://tio-pratomo.github.io/utility-js/",
-              },
-              {
-                label: "Docusaurus Docs",
-                href: "https://docusaurus.io/",
               },
             ],
           },
