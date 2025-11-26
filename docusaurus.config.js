@@ -142,15 +142,15 @@ const config = {
             docsPluginId: "css",
           },
           {
-            type: "docSidebar",
-            sidebarId: "gitSidebar",
+            type: "doc",
+            docId: "intro",
             position: "left",
             label: "Git",
             docsPluginId: "git",
           },
           {
-            type: "docSidebar",
-            sidebarId: "bulmaSidebar",
+            type: "doc",
+            docId: "intro",
             position: "left",
             label: "Bulma",
             docsPluginId: "bulma",
@@ -183,7 +183,7 @@ const config = {
               },
               {
                 label: "Bulma",
-                to: "/bulma/01-PengenalanBulmaTerminologiKonsep",
+                to: "/bulma/intro",
               },
             ],
           },
