@@ -102,6 +102,17 @@ const config = {
           "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
       },
     ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "bulma",
+        path: "LearnBulma",
+        routeBasePath: "bulma",
+        sidebarPath: "./sidebarsBulma.js",
+        editUrl:
+          "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
+      },
+    ],
   ],
 
   themeConfig:
@@ -137,6 +148,13 @@ const config = {
             label: "Git",
             docsPluginId: "git",
           },
+          {
+            type: "docSidebar",
+            sidebarId: "bulmaSidebar",
+            position: "left",
+            label: "Bulma",
+            docsPluginId: "bulma",
+          },
 
           {
             href: "https://github.com/Tio-pratomo/html-css-git-tutorial/tree/main/",
@@ -162,6 +180,10 @@ const config = {
               {
                 label: "Git",
                 to: "/git/intro",
+              },
+              {
+                label: "Bulma",
+                to: "/bulma/01-PengenalanBulmaTerminologiKonsep",
               },
             ],
           },
