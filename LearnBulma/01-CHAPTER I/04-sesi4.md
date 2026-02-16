@@ -1,16 +1,24 @@
-# Grid Responsif & Komponen Umum (Toolbar & Pagination)
+---
+title: Grid Responsif untuk Daftar Data (Toolbar, List, Pagination)
+---
 
 ## Materi: Pengetahuan & Konsep
 
-### Mengelola Data Tampilan dengan Bulma
+Di sesi ini kita fokus ke area konten kanan di `dashboard.html`: bagaimana menampilkan _daftar buku_ dengan layout yang rapi dan responsif, bukan lagi kotak statistik dummy.
 
-Setelah memiliki layout dasar (Navbar + Sidebar), tantangan berikutnya adalah menampilkan data dengan rapi. Bulma menyediakan 3 komponen kunci untuk ini:
+Tiga komponen Bulma yang kita pakai:
 
-### 1. Level Component (Toolbar)
+- `level`: layout horizontal fleksibel untuk toolbar (judul + search + tombol aksi).
+- `media`: _media object_ untuk list item dengan gambar di kiri, teks di tengah, aksi di kanan.
+- `pagination`: navigasi halaman di bagian bawah daftar.
 
-`level` adalah komponen **horizontal layout** yang sangat fleksibel. Sering digunakan untuk **toolbar**, **statistic bar**, atau header bagian yang berisi judul di kiri dan tombol aksi di kanan.
+Kombinasi ini adalah pola umum untuk halaman “list data + aksi”: misalnya daftar buku, produk, pengguna, dll.
 
-**Struktur Level:**
+### 1. Level component sebagai toolbar
+
+`level` dipakai saat kamu ingin membuat baris dengan konten kiri dan kanan yang otomatis sejajar secara vertikal.
+
+Struktur dasar:
 
 ```html
 <nav class="level">
@@ -30,12 +38,19 @@ Setelah memiliki layout dasar (Navbar + Sidebar), tantangan berikutnya adalah me
 </nav>
 ```
 
-- Secara otomatis vertikal-center (`align-items: center`).
-- Di mobile, `level-left` dan `level-right` akan otomatis stack (bertumpuk vertikal) kecuali Anda pakai modifier `is-mobile`.
+Karakteristik penting:
 
-### 2. Pagination Component
+- `level` secara default melakukan vertical centering pada anak-anaknya (`align-items: center`).
+- Di mobile, `level-left` dan `level-right` akan menjadi tumpuk vertikal (kolom) → ini bagus untuk keterbacaan pada layar kecil.
+- Jika ingin memaksa tetap sejajar horizontal di mobile, kamu bisa menambahkan `is-mobile` di `nav class="level is-mobile"`.
 
-Navigasi halaman untuk data list. Sangat mudah diimplementasikan.
+Pada kasus “Book Inventory”, kiri berisi judul halaman, kanan berisi search + tombol “Add New”.
+
+### 2. Pagination: navigasi halaman list
+
+`pagination` adalah komponen standar untuk pindah halaman di list data.
+
+Contoh:
 
 ```html
 <nav class="pagination is-centered" role="navigation" aria-label="pagination">
@@ -49,19 +64,31 @@ Navigasi halaman untuk data list. Sangat mudah diimplementasikan.
         class="pagination-link is-current"
         aria-label="Page 46"
         aria-current="page"
-        >46</a
       >
+        46
+      </a>
     </li>
     <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
   </ul>
 </nav>
 ```
 
-- Modifier: `is-centered`, `is-right`, `is-rounded`, `is-small`, `is-medium`, `is-large`.
+Modifier yang sering digunakan:
 
-### 3. Media Object
+- Alignment: `is-centered`, `is-right`.
+- Bentuk & ukuran: `is-rounded`, `is-small`, `is-medium`, `is-large`.
 
-Komponen klasik untuk menampilkan list item seperti komentar, tweet, atau **daftar produk** (gambar di kiri, teks di kanan).
+Nanti di sisi JavaScript kamu bisa menghubungkan pagination ini dengan query backend, tapi sekarang fokus dulu ke struktur HTML-nya.
+
+### 3. Media object: pola list dengan gambar
+
+`media` adalah komponen klasik untuk:
+
+- Avatar/gambar di kiri.
+- Konten (judul, deskripsi, tag) di tengah.
+- Aksi (edit/delete) di kanan.
+
+Struktur:
 
 ```html
 <article class="media">
@@ -70,27 +97,38 @@ Komponen klasik untuk menampilkan list item seperti komentar, tweet, atau **daft
       <img src="book-cover.jpg" />
     </p>
   </figure>
+
   <div class="media-content">
     <div class="content">
-      <p><strong>Judul Buku</strong> <small>Author</small></p>
+      <p>
+        <strong>Judul Buku</strong> <small>Author</small>
+        <br />
+        Deskripsi singkat...
+      </p>
     </div>
   </div>
+
   <div class="media-right">
     <button class="delete"></button>
-    <!-- Tombol hapus -->
   </div>
 </article>
 ```
 
+Biasanya tiap item list dibungkus lagi dengan `box` supaya ada background putih dan shadow ringan.
+
 ---
 
-## Praktik: Membuat Halaman Daftar Buku
+## Praktik: Mengisi Halaman Daftar Buku di `dashboard.html`
 
-Kita akan memodifikasi file `dashboard.html` dari Sesi 3. Fokus kita sekarang adalah mengisi kolom kanan (`column is-9`) dengan **Daftar Buku** yang memiliki toolbar pencarian dan pagination.
+**Target:** kolom kanan (konten) yang sebelumnya berisi box “Welcome back, Admin!” + statistik akan kita ganti
 
-### Langkah 1: Tambahkan Toolbar (Level)
+**dengan:** toolbar + daftar buku + pagination.
 
-Hapus konten placeholder (kotak statistik) di dalam `column is-9`, dan ganti dengan kode ini:
+Anggap kamu sudah punya struktur `dashboard.html` dari Sesi 3 (navbar + sidebar + kolom kanan).
+
+### Langkah 1: Tambahkan toolbar `level`
+
+Di dalam kolom konten (misalnya `div.column.is-9-tablet.is-10-desktop`), hapus konten dummy lama dan ganti dengan:
 
 ```html
 <!-- TOOLBAR: Judul & Pencarian -->
@@ -128,9 +166,14 @@ Hapus konten placeholder (kotak statistik) di dalam `column is-9`, dan ganti den
 <!-- Garis pemisah -->
 ```
 
-### Langkah 2: Tambahkan Daftar Buku (Media Object)
+Perhatikan:
 
-Di bawah `<hr>`, tambahkan daftar buku menggunakan `box` dan `media object`. Kita buat 3 contoh item dummy.
+- `field has-addons` membuat input dan tombol nempel seperti _input group_.
+- `level-right` memuat search dan tombol Add New sejajar di kanan pada layar besar.
+
+### Langkah 2: Tambahkan daftar buku dengan `media` + `box`
+
+Di bawah `<hr />`, tambahkan beberapa item buku contoh:
 
 ```html
 <!-- Item Buku 1 -->
@@ -245,9 +288,15 @@ Di bawah `<hr>`, tambahkan daftar buku menggunakan `box` dan `media object`. Kit
 </div>
 ```
 
-### Langkah 3: Tambahkan Pagination
+Beberapa pola yang perlu kamu tangkap:
 
-Letakkan kode ini di bagian paling bawah kolom konten (setelah daftar buku).
+- Setiap item list dibungkus `box` → tampil seperti kartu, tapi lebih ringan dari `card` penuh.
+- Tag-tag kecil (`span.tag ...`) dipakai sebagai label kategori; warnanya menunjukkan kategori yang berbeda.
+- Tombol aksi `is-small is-outlined` di kanan menjaga layout tetap ringan, tidak didominasi tombol besar.
+
+### Langkah 3: Tambahkan pagination di bawah daftar
+
+Letakkan di paling bawah kolom konten:
 
 ```html
 <nav
@@ -266,8 +315,9 @@ Letakkan kode ini di bagian paling bawah kolom konten (setelah daftar buku).
         class="pagination-link is-current"
         aria-label="Page 46"
         aria-current="page"
-        >46</a
       >
+        46
+      </a>
     </li>
     <li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
     <li><span class="pagination-ellipsis">&hellip;</span></li>
@@ -276,33 +326,17 @@ Letakkan kode ini di bagian paling bawah kolom konten (setelah daftar buku).
 </nav>
 ```
 
----
-
-## Challenge & Modifikasi
-
-### Level 1: Basic
-
-1. **Ganti Placeholder Image**: Coba ganti `src` gambar dengan URL cover buku asli dari internet (misal: Amazon atau Google Books).
-2. **Tag Warna-Warni**: Modifikasi class `tag` pada setiap buku agar warnanya berbeda-beda sesuai kategori.
-
-### Level 2: Intermediate
-
-1. **Level Mobile**: Tambahkan class `is-mobile` pada `<nav class="level">` agar tombol search dan add new tetap sejajar horizontal di layar HP, tidak bertumpuk.
-   - Code: `<nav class="level is-mobile">`
-
-### Level 3: Advanced
-
-1. **Card View**: Ubah tampilan dari `media object` (list view) menjadi `grid card` (gallery view) menggunakan `columns is-multiline`.
-   - Buat grid 3 kolom (`column is-4`).
-   - Di dalam setiap kolom, masukkan komponen `card` Bulma.
+`is-centered is-rounded` membuat pagination berada di tengah dan tampil membulat.
 
 ---
 
-## Checklist Sebelum Sesi 5
+## Challenge & eksplorasi singkat
 
-- [ ] Halaman Dashboard sekarang menampilkan daftar buku.
-- [ ] Ada toolbar di atas dengan tombol Search dan Add New.
-- [ ] Pagination muncul di bagian bawah.
-- [ ] Resize browser: Cek apakah toolbar berantakan di mobile? (Hint: Toolbar standar Bulma akan stack di mobile, ini normal. Gunakan `is-mobile` jika ingin tetap sejajar).
+Kerjakan seperlunya, yang penting kamu mengutak-atik sendiri:
 
-**Catatan**: Di Sesi 5, kita akan membuat halaman **"Add New Book"** yang fokus pada penggunaan form lanjutan seperti **Breadcrumb Navigation** dan **File Upload** yang cantik.
+- Ganti URL gambar placeholder dengan cover buku asli (boleh dari Unsplash atau sumber legal lain).
+- Ubah warna `tag` per kategori dan lihat kombinasi mana yang nyaman (misal: `is-danger` untuk “Bug”, `is-info` untuk “Docs”, dll.).
+- Tambahkan `is-mobile` pada `<nav class="level">` dan lihat perbedaan perilaku toolbar di layar kecil.
+- Kalau sudah nyaman, coba eksperimen “Card view”: pakai `columns is-multiline` + `column is-4` dan letakkan `card` di dalamnya sebagai alternatif layout grid.
+
+Kalau `dashboard.html` kamu sekarang sudah punya toolbar, list buku, dan pagination yang tampak rapi dan responsif, kita siap lanjut ke Sesi 5 yang akan fokus pada halaman “Add New Book”: breadcrumb + form lanjutan + file upload.

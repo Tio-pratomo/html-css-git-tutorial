@@ -17,13 +17,7 @@ const config = {
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
-    /* 
-     * Disable faster experiment
-    experimental_faster: {
-      rspackBundler: true, // required flag
-      rspackPersistentCache: true, // new flag
-    },
-    */
+    experimental_faster: true,
   },
 
   // Set the production url of your site here
@@ -143,17 +137,17 @@ const config = {
           },
           {
             type: "doc",
-            docId: "intro",
+            docId: "CHAPTER I/sesi1",
             position: "left",
-            label: "Git",
-            docsPluginId: "git",
+            label: "Bulma",
+            docsPluginId: "bulma",
           },
           {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Bulma",
-            docsPluginId: "bulma",
+            label: "Git",
+            docsPluginId: "git",
           },
 
           {
@@ -224,7 +218,28 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
-        additionalLanguages: ["markdown"],
+        additionalLanguages: [
+          // Markup (dependency untuk PHP)
+          "markup",
+
+          // Backend languages
+          "php",
+          "python",
+          "go",
+          "rust",
+          "java",
+          "csharp",
+
+          // Shell scripting
+          "bash",
+          "powershell",
+          "ini",
+
+          // Data formats
+          "json",
+          "yaml",
+          "toml",
+        ],
       },
     }),
 };
