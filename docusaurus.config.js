@@ -177,7 +177,7 @@ const config = {
               },
               {
                 label: "Bulma",
-                to: "/bulma/intro",
+                to: "/bulma/CHAPTER I/sesi1",
               },
             ],
           },
